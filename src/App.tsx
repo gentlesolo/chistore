@@ -52,7 +52,8 @@ const App: React.FC = () => {
     // We use this hook to skip the login page and demonstrate the application more quickly.
     const { loading } = useAutoLoginForDemo();
 
-    const API_URL = "https://api.finefoods.refine.dev";
+    // const API_URL = "https://api.finefoods.refine.dev";
+    const API_URL = "#";
     const dataProvider = jsonServerDataProvider(API_URL);
 
     const { t, i18n } = useTranslation();
@@ -69,7 +70,7 @@ const App: React.FC = () => {
 
     return (
         <BrowserRouter>
-            <GitHubBanner />
+            {/*<GitHubBanner />*/}
             <ConfigProvider>
                 <RefineKbarProvider>
                     <Refine

@@ -86,7 +86,7 @@ export const authProvider: AuthProvider = {
 
         return {
             id: 1,
-            name: "James Sullivan",
+            name: "Chiamaka",
             avatar: "https://i.pravatar.cc/150",
         };
     },
