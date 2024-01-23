@@ -115,29 +115,29 @@ const App: React.FC = () => {
                                     icon: <PizzaIcon />,
                                 },
                             },
-                            {
-                                name: "stores",
-                                list: "/stores",
-                                create: "/stores/create",
-                                edit: "/stores/edit/:id",
-                                meta: {
-                                    icon: <ShopOutlined />,
-                                },
-                            },
+                            // {
+                            //     name: "stores",
+                            //     list: "/stores",
+                            //     create: "/stores/create",
+                            //     edit: "/stores/edit/:id",
+                            //     meta: {
+                            //         icon: <ShopOutlined />,
+                            //     },
+                            // },
                             {
                                 name: "categories",
                                 list: "/categories",
                             },
-                            {
-                                name: "couriers",
-                                list: "/couriers",
-                                create: "/couriers/create",
-                                edit: "/couriers/edit/:id",
-                                show: "/couriers/show/:id",
-                                meta: {
-                                    icon: <BikeWhiteIcon />,
-                                },
-                            },
+                            // {
+                            //     name: "couriers",
+                            //     list: "/couriers",
+                            //     create: "/couriers/create",
+                            //     edit: "/couriers/edit/:id",
+                            //     show: "/couriers/show/:id",
+                            //     meta: {
+                            //         icon: <BikeWhiteIcon />,
+                            //     },
+                            // },
                             {
                                 name: "reviews",
                                 list: "/reviews",

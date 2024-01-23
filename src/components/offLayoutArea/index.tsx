@@ -6,12 +6,15 @@ import { ToggleContainer } from "./styled";
 export const OffLayoutArea = () => {
     return (
         <ToggleContainer>
-            <RefineKbar />
+            {/*<a href="https://example.refine.dev">*/}
+            {/*    Switch to <br />*/}
+            {/*    <strong>CLIENT APP</strong>*/}
+            {/*</a><RefineKbar />*/}
             <LeftOutlined />
-            <a href="https://example.refine.dev">
-                Switch to <br />
-                <strong>CLIENT APP</strong>
-            </a>
+            {/*<a href="https://example.refine.dev">*/}
+            {/*    Switch to <br />*/}
+            {/*    <strong>CLIENT APP</strong>*/}
+            {/*</a>*/}
         </ToggleContainer>
     );
 };
