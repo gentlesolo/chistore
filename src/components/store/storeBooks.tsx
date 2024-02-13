@@ -18,40 +18,40 @@ import {
 } from "antd";
 
 import {
-    CreateProduct,
-    EditProduct,
-    ProductItem,
-    ProductCategoryFilter,
-} from "../../components/product";
-import { IStore, IProduct } from "../../interfaces";
-import { StyledStoreProducts } from "./styled";
+    CreateBook,
+    EditBook,
+    BookItem,
+    BookCategoryFilter,
+} from "../book";
+import { IStore, IBook } from "../../interfaces";
+import { StyledStoreBooks } from "./styled";
 
 const { Text } = Typography;
 
-type StoreProductsProps = {
+type StoreBooksProps = {
     record: IStore;
     modalProps: ModalProps;
 };
 
-export const StoreProducts: React.FC<StoreProductsProps> = ({
+export const StoreBooks: React.FC<StoreBooksProps> = ({
     record,
     modalProps,
 }) => {
     const t = useTranslate();
 
     const { listProps, searchFormProps, queryResult } = useSimpleList<
-        IProduct,
+        IBook,
         HttpError,
         { name: string; categories: string[] }
     >({
-        resource: "products",
+        resource: "books",
         pagination: { pageSize: 9 },
         syncWithLocation: false,
         onSearch: ({ name, categories }) => {
-            const productFilters: CrudFilters = [];
+            const bookFilters: CrudFilters = [];
 
             if (categories.length > 0) {
-                productFilters.push({
+                bookFilters.push({
                     field: "category.id",
                     operator: "in",
                     value: categories,
@@ -59,41 +59,41 @@ export const StoreProducts: React.FC<StoreProductsProps> = ({
             }
 
             if (name) {
-                productFilters.push({
+                bookFilters.push({
                     field: "name",
                     operator: "contains",
                     value: name,
                 });
             }
 
-            return productFilters;
+            return bookFilters;
         },
     });
-    const { data: productData } = queryResult;
+    const { data: bookData } = queryResult;
 
     const mergedData =
-        productData?.data.map((product) => ({
-            ...record?.products.find(
-                (storeProduct) => storeProduct.id === product.id,
+        bookData?.data.map((book) => ({
+            ...record?.books.find(
+                (storeBook) => storeBook.id === book.id,
             ),
-            ...product,
+            ...book,
         })) ?? [];
 
     const { mutate } = useUpdate<IStore>();
 
-    const updateStock = (changedValue: number, clickedProduct: IProduct) => {
-        const shopProduct = record.products.find(
-            (p) => p.id === clickedProduct.id,
+    const updateStock = (changedValue: number, clickedBook: IBook) => {
+        const shopBook = record.books.find(
+            (p) => p.id === clickedBook.id,
         );
 
-        if (shopProduct) {
-            shopProduct.stock = changedValue;
+        if (shopBook) {
+            shopBook.stock = changedValue;
 
             mutate({
                 id: record.id,
                 resource: "stores",
                 values: {
-                    products: record.products,
+                    books: record.books,
                 },
                 successNotification: false,
                 mutationMode: "optimistic",
@@ -106,9 +106,9 @@ export const StoreProducts: React.FC<StoreProductsProps> = ({
         formProps: createFormProps,
         saveButtonProps: createSaveButtonProps,
         show: createShow,
-    } = useDrawerForm<IProduct>({
+    } = useDrawerForm<IBook>({
         action: "create",
-        resource: "products",
+        resource: "books",
         redirect: false,
     });
 
@@ -117,9 +117,9 @@ export const StoreProducts: React.FC<StoreProductsProps> = ({
         formProps: editFormProps,
         saveButtonProps: editSaveButtonProps,
         show: editShow,
-    } = useDrawerForm<IProduct>({
+    } = useDrawerForm<IBook>({
         action: "edit",
-        resource: "products",
+        resource: "books",
         redirect: false,
     });
 
@@ -137,21 +137,21 @@ export const StoreProducts: React.FC<StoreProductsProps> = ({
                 >
                     <Row gutter={[16, 16]}>
                         <Col xs={24} sm={18}>
-                            <StyledStoreProducts>
+                            <StyledStoreBooks>
                                 <Text style={{ fontSize: "24px" }} strong>
-                                    {t("stores.storeProducts")}
+                                    {t("stores.storeBooks")}
                                 </Text>
                                 <Form.Item name="name" noStyle>
                                     <Input
                                         style={{ width: "300px" }}
-                                        placeholder={t("stores.productSearch")}
+                                        placeholder={t("stores.bookSearch")}
                                         suffix={<SearchOutlined />}
                                     />
                                 </Form.Item>
                                 <CreateButton onClick={() => createShow()}>
-                                    {t("stores.buttons.addProduct")}
+                                    {t("stores.buttons.addBook")}
                                 </CreateButton>
-                            </StyledStoreProducts>
+                            </StyledStoreBooks>
                             <AntdList
                                 grid={{
                                     gutter: 8,
@@ -169,9 +169,9 @@ export const StoreProducts: React.FC<StoreProductsProps> = ({
                                     paddingRight: "4px",
                                 }}
                                 {...listProps}
-                                dataSource={mergedData as IProduct[]}
+                                dataSource={mergedData as IBook[]}
                                 renderItem={(item) => (
-                                    <ProductItem
+                                    <BookItem
                                         item={item}
                                         updateStock={updateStock}
                                         editShow={editShow}
@@ -193,18 +193,18 @@ export const StoreProducts: React.FC<StoreProductsProps> = ({
                                 </Text>
                             </div>
                             <Form.Item name="categories">
-                                <ProductCategoryFilter />
+                                <BookCategoryFilter />
                             </Form.Item>
                         </Col>
                     </Row>
                 </Form>
             </Modal>
-            <CreateProduct
+            <CreateBook
                 drawerProps={createDrawerProps}
                 formProps={createFormProps}
                 saveButtonProps={createSaveButtonProps}
             />
-            <EditProduct
+            <EditBook
                 drawerProps={editDrawerProps}
                 formProps={editFormProps}
                 saveButtonProps={editSaveButtonProps}

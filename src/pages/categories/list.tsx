@@ -25,8 +25,8 @@ import {
     Grid,
 } from "antd";
 
-import { ICategory, IProduct } from "../../interfaces";
-import { EditProduct } from "../../components/product";
+import { ICategory, IBook } from "../../interfaces";
+import { EditBook } from "../../components/book";
 
 export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     const {
@@ -181,11 +181,11 @@ export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     );
 };
 
-const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
+const CategoryBooksTable: React.FC<{ record: ICategory }> = ({ record }) => {
     const t = useTranslate();
 
-    const { tableProps: postTableProps } = useTable<IProduct>({
-        resource: "products",
+    const { tableProps: postTableProps } = useTable<IBook>({
+        resource: "books",
         permanentFilter: [
             {
                 field: "category.id",
@@ -201,13 +201,13 @@ const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
         formProps: editFormProps,
         saveButtonProps: editSaveButtonProps,
         show: editShow,
-    } = useDrawerForm<IProduct>({
+    } = useDrawerForm<IBook>({
         action: "edit",
-        resource: "products",
+        resource: "book",
         redirect: false,
     });
 
-    const moreMenu = (record: IProduct) => (
+    const moreMenu = (record: IBook) => (
         <Menu
             mode="vertical"
             onClick={({ domEvent }) => domEvent.stopPropagation()}
@@ -237,7 +237,7 @@ const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
     );
 
     return (
-        <List title={t("products.products")} createButtonProps={undefined}>
+        <List title={t("books.books")} createButtonProps={undefined}>
             <Table {...postTableProps} rowKey="id">
                 <Table.Column
                     dataIndex="images"
@@ -247,13 +247,13 @@ const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
                 <Table.Column
                     key="name"
                     dataIndex="name"
-                    title={t("products.fields.name")}
+                    title={t("books.fields.name")}
                 />
                 <Table.Column
                     align="right"
                     key="price"
                     dataIndex="price"
-                    title={t("products.fields.price")}
+                    title={t("books.fields.price")}
                     render={(value) => {
                         return (
                             <NumberField
@@ -271,18 +271,18 @@ const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
                 <Table.Column
                     key="isActive"
                     dataIndex="isActive"
-                    title={t("products.fields.isActive")}
+                    title={t("books.fields.isActive")}
                     render={(value) => <BooleanField value={value} />}
                 />
                 <Table.Column
                     key="createdAt"
                     dataIndex="createdAt"
-                    title={t("products.fields.createdAt")}
+                    title={t("books.fields.createdAt")}
                     render={(value) => <DateField value={value} format="LLL" />}
                     sorter
                 />
-                <Table.Column<IProduct>
-                    dataIndex="products_actions"
+                <Table.Column<IBook>
+                    dataIndex="books_actions"
                     title={t("table.actions")}
                     render={(_, record) => (
                         <Dropdown
@@ -299,7 +299,7 @@ const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
                     )}
                 />
             </Table>
-            <EditProduct
+            <EditBook
                 drawerProps={editDrawerProps}
                 formProps={editFormProps}
                 saveButtonProps={editSaveButtonProps}
@@ -309,5 +309,5 @@ const CategoryProductsTable: React.FC<{ record: ICategory }> = ({ record }) => {
 };
 
 const expandedRowRender = (record: ICategory) => {
-    return <CategoryProductsTable record={record} />;
+    return <CategoryBooksTable record={record} />;
 };

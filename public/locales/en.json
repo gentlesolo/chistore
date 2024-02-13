@@ -296,6 +296,24 @@
             "createdAt": "CreatedAt"
         }
     },
+    "books": {
+        "books": "Books",
+        "titles": {
+            "list": "Books",
+            "create": "Create Book",
+            "edit": "Edit Book"
+        },
+        "fields": {
+            "id": "ID",
+            "name": "Name",
+            "description": "Description",
+            "isActive": "Active",
+            "price": "Price",
+            "category": "Category",
+            "imageURL": "image URL",
+            "createdAt": "CreatedAt"
+        }
+    },
     "reviews": {
         "reviews": "Reviews",
         "titles": {
@@ -326,16 +344,16 @@
             "gsm": "Phone"
         },
         "buttons": {
-            "editProducts": "Edit Products",
-            "addProduct": "Add Product",
+            "editProducts": "Edit Books",
+            "addProduct": "Add Book",
             "outOfStock": "Out Of Stock",
-            "edit": "Edit Product"
+            "edit": "Edit Book"
         },
         "selectLocation": "Choose store location on the map",
         "storeProducts": "Store Products",
         "tagFilterDescription": "Use tags to filter your search",
         "all": "All",
-        "productSearch": "Product Search"
+        "productSearch": "Book Search"
     },
     "users": {
         "users": "Users",

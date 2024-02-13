@@ -192,7 +192,7 @@ export const UserShow: React.FC<IResourceComponentsProps> = () => {
                             <Table.Column<IOrder>
                                 key="products"
                                 dataIndex="products"
-                                title={t("orders.fields.products")}
+                                title={t("orders.fields.books")}
                                 render={(_, record) => (
                                     <Popover
                                         content={

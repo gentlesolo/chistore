@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const StyledStoreProducts = styled.div`
+export const StyledStoreBooks = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;

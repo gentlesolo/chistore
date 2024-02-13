@@ -33,7 +33,7 @@ export const DashboardPage: React.FC = () => {
                                 backgroundSize: "cover",
                             }}
                         >
-                            <DailyRevenue />
+                            {/*<DailyRevenue />*/}
                         </Card>
                     </Col>
                     <Col xl={7} lg={12} md={24} sm={24} xs={24}>
@@ -49,7 +49,7 @@ export const DashboardPage: React.FC = () => {
                                 backgroundSize: "cover",
                             }}
                         >
-                            <DailyOrders />
+                            {/*<DailyOrders />*/}
                         </Card>
                     </Col>
                     <Col xl={7} lg={12} md={24} sm={24} xs={24}>
@@ -65,7 +65,7 @@ export const DashboardPage: React.FC = () => {
                                 backgroundSize: "cover",
                             }}
                         >
-                            <NewCustomers />
+                            {/*<NewCustomers />*/}
                         </Card>
                     </Col>
                 </Row>
@@ -84,7 +84,7 @@ export const DashboardPage: React.FC = () => {
                         </Text>
                     }
                 >
-                    <DeliveryMap />
+                    {/*<DeliveryMap />*/}
                 </Card>
             </Col>
             <Col xl={7} lg={8} md={24} sm={24} xs={24}>
@@ -99,7 +99,7 @@ export const DashboardPage: React.FC = () => {
                         </Text>
                     }
                 >
-                    <OrderTimeline />
+                    {/*<OrderTimeline />*/}
                 </Card>
             </Col>
             <Col xl={17} lg={16} md={24} sm={24} xs={24}>
@@ -108,7 +108,7 @@ export const DashboardPage: React.FC = () => {
                         <Text strong>{t("dashboard.recentOrders.title")}</Text>
                     }
                 >
-                    <RecentOrders />
+                    {/*<RecentOrders />*/}
                 </Card>
             </Col>
             <Col xl={7} lg={8} md={24} sm={24} xs={24}>
@@ -117,7 +117,7 @@ export const DashboardPage: React.FC = () => {
                         <Text strong>{t("dashboard.trendingMenus.title")}</Text>
                     }
                 >
-                    <TrendingMenu />
+                    {/*<TrendingMenu />*/}
                 </Card>
             </Col>
         </Row>

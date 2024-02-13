@@ -35,7 +35,7 @@ import {
     CourierCreate,
     CourierEdit,
 } from "./pages/couriers";
-import { ProductList } from "./pages/products";
+import {BookCreate, BookList} from "./pages/books";
 import { StoreCreate, StoreEdit, StoreList } from "./pages/stores";
 import { CategoryList } from "./pages/categories";
 import { ReviewsList } from "./pages/reviews";
@@ -46,6 +46,7 @@ import { ConfigProvider } from "./context";
 import { useAutoLoginForDemo } from "./hooks";
 
 import "@refinedev/antd/dist/reset.css";
+import {ProductList} from "./pages/products";
 
 const App: React.FC = () => {
     // This hook is used to automatically login the user.
@@ -53,7 +54,7 @@ const App: React.FC = () => {
     const { loading } = useAutoLoginForDemo();
 
     // const API_URL = "https://api.finefoods.refine.dev";
-    const API_URL = "#";
+    const API_URL = "http://localhost:8080";
     const dataProvider = jsonServerDataProvider(API_URL);
 
     const { t, i18n } = useTranslation();
@@ -92,14 +93,14 @@ const App: React.FC = () => {
                                     icon: <DashboardOutlined />,
                                 },
                             },
-                            {
-                                name: "orders",
-                                list: "/orders",
-                                show: "/orders/show/:id",
-                                meta: {
-                                    icon: <ShoppingOutlined />,
-                                },
-                            },
+                            // {
+                            //     name: "orders",
+                            //     list: "/orders",
+                            //     show: "/orders/show/:id",
+                            //     meta: {
+                            //         icon: <ShoppingOutlined />,
+                            //     },
+                            // },
                             {
                                 name: "users",
                                 list: "/users",
@@ -108,9 +109,11 @@ const App: React.FC = () => {
                                     icon: <UsergroupAddOutlined />,
                                 },
                             },
+                            // {
                             {
-                                name: "products",
-                                list: "/products",
+                                name: "book",
+                                list: "/book",
+                                create: "/book/create",
                                 meta: {
                                     icon: <PizzaIcon />,
                                 },
@@ -125,8 +128,8 @@ const App: React.FC = () => {
                             //     },
                             // },
                             {
-                                name: "categories",
-                                list: "/categories",
+                                name: "category",
+                                list: "/category",
                             },
                             // {
                             //     name: "couriers",
@@ -138,13 +141,13 @@ const App: React.FC = () => {
                             //         icon: <BikeWhiteIcon />,
                             //     },
                             // },
-                            {
-                                name: "reviews",
-                                list: "/reviews",
-                                meta: {
-                                    icon: <StarOutlined />,
-                                },
-                            },
+                            // {
+                            //     name: "reviews",
+                            //     list: "/reviews",
+                            //     meta: {
+                            //         icon: <StarOutlined />,
+                            //     },
+                            // },
                         ]}
                     >
                         <Routes>
@@ -168,13 +171,13 @@ const App: React.FC = () => {
                             >
                                 <Route index element={<DashboardPage />} />
 
-                                <Route path="/orders">
-                                    <Route index element={<OrderList />} />
-                                    <Route
-                                        path="show/:id"
-                                        element={<OrderShow />}
-                                    />
-                                </Route>
+                                {/*<Route path="/orders">*/}
+                                {/*    <Route index element={<OrderList />} />*/}
+                                {/*    <Route*/}
+                                {/*        path="show/:id"*/}
+                                {/*        element={<OrderShow />}*/}
+                                {/*    />*/}
+                                {/*</Route>*/}
 
                                 <Route path="/users">
                                     <Route index element={<UserList />} />
@@ -184,48 +187,62 @@ const App: React.FC = () => {
                                     />
                                 </Route>
 
+                                {/*<Route*/}
+                                {/*    path="/product"*/}
+                                {/*    element={<ProductList />}*/}
+                                {/*/>*/}
+
                                 <Route
-                                    path="/products"
-                                    element={<ProductList />}
+                                    path="/book"
+                                    element={<BookList />}
                                 />
+                                    <Route
+                                        path="/book/create"
+                                        element={<BookCreate />}
+                                    />
 
-                                <Route path="/stores">
-                                    <Route index element={<StoreList />} />
-                                    <Route
-                                        path="create"
-                                        element={<StoreCreate />}
-                                    />
-                                    <Route
-                                        path="edit/:id"
-                                        element={<StoreEdit />}
-                                    />
-                                </Route>
+                                {/*<Route path="/stores">*/}
+                                {/*    <Route index element={<StoreList />} />*/}
+                                {/*    <Route*/}
+                                {/*        path="create"*/}
+                                {/*        element={<StoreCreate />}*/}
+                                {/*    />*/}
+                                {/*    <Route*/}
+                                {/*        path="edit/:id"*/}
+                                {/*        element={<StoreEdit />}*/}
+                                {/*    />*/}
+                                {/*</Route>*/}
 
                                 <Route
-                                    path="/categories"
+                                    path="/category"
                                     element={<CategoryList />}
                                 />
 
-                                <Route path="/couriers">
-                                    <Route index element={<CourierList />} />
-                                    <Route
-                                        path="create"
-                                        element={<CourierCreate />}
-                                    />
-                                    <Route
-                                        path="edit/:id"
-                                        element={<CourierEdit />}
-                                    />
-                                    <Route
-                                        path="show/:id"
-                                        element={<CourierShow />}
-                                    />
-                                </Route>
+                                {/*<Route*/}
+                                {/*    path="/branch"*/}
+                                {/*    element={<BranchList />}*/}
+                                {/*/>*/}
 
-                                <Route
-                                    path="/reviews"
-                                    element={<ReviewsList />}
-                                />
+                                {/*<Route path="/couriers">*/}
+                                {/*    <Route index element={<CourierList />} />*/}
+                                {/*    <Route*/}
+                                {/*        path="create"*/}
+                                {/*        element={<CourierCreate />}*/}
+                                {/*    />*/}
+                                {/*    <Route*/}
+                                {/*        path="edit/:id"*/}
+                                {/*        element={<CourierEdit />}*/}
+                                {/*    />*/}
+                                {/*    <Route*/}
+                                {/*        path="show/:id"*/}
+                                {/*        element={<CourierShow />}*/}
+                                {/*    />*/}
+                                {/*</Route>*/}
+
+                                {/*<Route*/}
+                                {/*    path="/reviews"*/}
+                                {/*    element={<ReviewsList />}*/}
+                                {/*/>*/}
                             </Route>
 
                             <Route

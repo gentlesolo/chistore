@@ -10,40 +10,40 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Row, List as AntdList, Col, Form, Input, Typography } from "antd";
 
 import {
-    ProductItem,
-    ProductCategoryFilter,
-    CreateProduct,
-    EditProduct,
-} from "../../components/product";
-import { IProduct } from "../../interfaces";
+    BookItem,
+    BookCategoryFilter,
+    CreateBook,
+    EditBook,
+} from "../../components/book";
+import { IBook } from "../../interfaces";
 
 const { Text } = Typography;
 
-export const ProductList: React.FC<IResourceComponentsProps> = () => {
+export const BookList: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();
 
     const { listProps, searchFormProps, filters } = useSimpleList<
-        IProduct,
+        IBook,
         HttpError,
         { name: string; categories: string[] }
     >({
         pagination: { pageSize: 12, current: 1 },
         onSearch: ({ name, categories }) => {
-            const productFilters: CrudFilters = [];
+            const bookFilters: CrudFilters = [];
 
-            productFilters.push({
+            bookFilters.push({
                 field: "category.id",
                 operator: "in",
                 value: categories?.length > 0 ? categories : undefined,
             });
 
-            productFilters.push({
+            bookFilters.push({
                 field: "name",
                 operator: "contains",
                 value: name ? name : undefined,
             });
 
-            return productFilters;
+            return bookFilters;
         },
     });
 
@@ -52,9 +52,9 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
         formProps: createFormProps,
         saveButtonProps: createSaveButtonProps,
         show: createShow,
-    } = useDrawerForm<IProduct>({
+    } = useDrawerForm<IBook>({
         action: "create",
-        resource: "products",
+        resource: "book/create",
         redirect: false,
     });
 
@@ -64,9 +64,9 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
         saveButtonProps: editSaveButtonProps,
         show: editShow,
         id: editId,
-    } = useDrawerForm<IProduct>({
+    } = useDrawerForm<IBook>({
         action: "edit",
-        resource: "products",
+        resource: "book",
         redirect: false,
     });
 
@@ -95,19 +95,19 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
                             }}
                         >
                             <Text style={{ fontSize: "24px" }} strong>
-                                {t("products.products")}
+                                {t("books.books")}
                             </Text>
-                            <Form.Item name="name" noStyle>
-                                <Input
-                                    style={{
-                                        width: "400px",
-                                    }}
-                                    placeholder={t("stores.productSearch")}
-                                    suffix={<SearchOutlined />}
-                                />
-                            </Form.Item>
+                            {/*<Form.Item name="name" noStyle>*/}
+                            {/*    <Input*/}
+                            {/*        style={{*/}
+                            {/*            width: "400px",*/}
+                            {/*        }}*/}
+                            {/*        placeholder={t("stores.bookSearch")}*/}
+                            {/*        suffix={<SearchOutlined />}*/}
+                            {/*    />*/}
+                            {/*</Form.Item>*/}
                             <CreateButton onClick={() => createShow()}>
-                                {t("stores.buttons.addProduct")}
+                                {t("stores.buttons.addBook")}
                             </CreateButton>
                         </div>
                         <AntdList
@@ -127,7 +127,7 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
                             }}
                             {...listProps}
                             renderItem={(item) => (
-                                <ProductItem item={item} editShow={editShow} />
+                                <BookItem item={item} editShow={editShow} />
                             )}
                         />
                     </Col>
@@ -145,17 +145,17 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
                             </Text>
                         </div>
                         <Form.Item name="categories">
-                            <ProductCategoryFilter />
+                            <BookCategoryFilter />
                         </Form.Item>
                     </Col>
                 </Row>
             </Form>
-            <CreateProduct
+            <CreateBook
                 drawerProps={createDrawerProps}
                 formProps={createFormProps}
                 saveButtonProps={createSaveButtonProps}
             />
-            <EditProduct
+            <EditBook
                 drawerProps={editDrawerProps}
                 formProps={editFormProps}
                 saveButtonProps={editSaveButtonProps}

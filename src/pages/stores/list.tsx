@@ -14,7 +14,7 @@ import {
 import { FormOutlined, MoreOutlined } from "@ant-design/icons";
 import { Table, Dropdown, Menu, Avatar } from "antd";
 
-import { StoreProducts } from "../../components/store";
+import { StoreBooks } from "../../components/store";
 import { IStore } from "../../interfaces";
 
 export const StoreList: React.FC<IResourceComponentsProps> = () => {
@@ -139,7 +139,7 @@ export const StoreList: React.FC<IResourceComponentsProps> = () => {
                 </Table>
             </List>
             {record && (
-                <StoreProducts modalProps={modalProps} record={record} />
+                <StoreBooks modalProps={modalProps} record={record} />
             )}
         </>
     );

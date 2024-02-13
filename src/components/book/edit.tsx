@@ -21,14 +21,14 @@ import { ICategory } from "../../interfaces";
 
 const { Text } = Typography;
 
-type EditProductProps = {
+type EditBookProps = {
     drawerProps: DrawerProps;
     formProps: FormProps;
     saveButtonProps: ButtonProps;
     editId?: BaseKey;
 };
 
-export const EditProduct: React.FC<EditProductProps> = ({
+export const EditBook: React.FC<EditBookProps> = ({
     drawerProps,
     formProps,
     saveButtonProps,
@@ -39,7 +39,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
     const breakpoint = Grid.useBreakpoint();
 
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
-        resource: "categories",
+        resource: "category",
     });
 
     return (
@@ -50,7 +50,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
         >
             <Edit
                 saveButtonProps={saveButtonProps}
-                resource="product"
+                resource="book"
                 recordItemId={editId}
                 contentProps={{
                     style: {
@@ -62,9 +62,9 @@ export const EditProduct: React.FC<EditProductProps> = ({
                 }}
             >
                 <Form {...formProps} layout="vertical">
-                    <Form.Item label={t("products.fields.images.label")}>
+                    <Form.Item label={t("books.fields.imageURL.label")}>
                         <Form.Item
-                            name="images"
+                            name="imageURL"
                             valuePropName="fileList"
                             getValueFromEvent={getValueFromEvent}
                             noStyle
@@ -88,7 +88,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
                                             height: "100%",
                                             maxWidth: "256px",
                                         }}
-                                        src="/images/product-default-img.png"
+                                        src="/images/book-default-img.png"
                                         alt="Store Location"
                                     />
                                     <Text
@@ -99,18 +99,18 @@ export const EditProduct: React.FC<EditProductProps> = ({
                                         }}
                                     >
                                         {t(
-                                            "products.fields.images.description",
+                                            "books.fields.images.description",
                                         )}
                                     </Text>
                                     <Text style={{ fontSize: "12px" }}>
-                                        {t("products.fields.images.validation")}
+                                        {t("books.fields.images.validation")}
                                     </Text>
                                 </Space>
                             </Upload.Dragger>
                         </Form.Item>
                     </Form.Item>
                     <Form.Item
-                        label={t("products.fields.name")}
+                        label={t("books.fields.name")}
                         name="name"
                         rules={[
                             {
@@ -121,7 +121,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        label={t("products.fields.description")}
+                        label={t("books.fields.description")}
                         name="description"
                         rules={[
                             {
@@ -132,7 +132,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
                         <Input.TextArea rows={6} />
                     </Form.Item>
                     <Form.Item
-                        label={t("products.fields.price")}
+                        label={t("books.fields.price")}
                         name="price"
                         rules={[
                             {
@@ -146,7 +146,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
                         />
                     </Form.Item>
                     <Form.Item
-                        label={t("products.fields.category")}
+                        label={t("books.fields.category")}
                         name={["category", "id"]}
                         rules={[
                             {
@@ -157,7 +157,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
                         <Select {...categorySelectProps} />
                     </Form.Item>
                     <Form.Item
-                        label={t("products.fields.isActive")}
+                        label={t("books.fields.isActive")}
                         name="isActive"
                     >
                         <Radio.Group>

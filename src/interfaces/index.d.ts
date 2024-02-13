@@ -1,4 +1,6 @@
 import { Dayjs } from "dayjs";
+import { UploadFile } from "antd/lib/upload/interface";
+import * as url from "url";
 
 export interface IOrderChart {
     count: number;
@@ -71,7 +73,7 @@ export interface IStore {
     isActive: boolean;
     createdAt: string;
     address: IAddress;
-    products: IProduct[];
+    books: IBook[];
 }
 
 export interface ICourier {
@@ -90,28 +92,71 @@ export interface ICourier {
 }
 export interface IOrder {
     id: number;
-    user: IUser;
+    // user: IUser;
     createdAt: string;
-    products: IProduct[];
+    books: IBook[];
     status: IOrderStatus;
-    adress: IAddress;
-    store: IStore;
-    courier: ICourier;
+    // address: IAddress;
+    // store: IStore;
+    // courier: ICourier;
     events: IEvent[];
     orderNumber: number;
     amount: number;
 }
+export interface IOrder {
+    id: number;
+    // user: IUser;
+    amount: number;
+    createdAt: string;
+    // orderItems: IBook[];
+    status: IOrderStatus;
+    // address: IAddress;
+    // store: IStore;
+    // courier: ICourier;
+    // events: IEvent[];
+    orderNumber: number;
 
-export interface IProduct {
+}
+
+// export interface IProduct {
+//     id: number;
+//     name: string;
+//     isActive: boolean;
+//     description: string;
+//     images: IFile[];
+//     createdAt: string;
+//     price: number;
+//     category: ICategory;
+//     stock: number;
+// }
+
+export interface IBookCover {
+    name: string;
+    url: string;
+    size: number;
+    uid: string;
+}
+
+export interface IBookVariable {
     id: number;
     name: string;
-    isActive: boolean;
+    // isActive: boolean;
     description: string;
-    images: IFile[];
     createdAt: string;
     price: number;
-    category: ICategory;
-    stock: number;
+    category: number;
+    imageURL: UploadFile[];
+}
+export interface IBook {
+    id: number;
+    name: string;
+    // isActive: boolean;
+    description: string;
+    imageURL: IBookCover[];
+    createdAt: string;
+    price: number;
+    category: number;
+    // stock: number;
 }
 
 export interface ICategory {

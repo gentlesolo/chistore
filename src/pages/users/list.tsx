@@ -110,18 +110,18 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
             <Col xl={18} xs={24}>
                 <List>
                     <Table {...tableProps} rowKey="id">
-                        <Table.Column
-                            key="gsm"
-                            dataIndex="gsm"
-                            title={t("users.fields.gsm")}
-                        />
-                        <Table.Column
-                            align="center"
-                            key="avatar"
-                            dataIndex={["avatar"]}
-                            title={t("users.fields.avatar.label")}
-                            render={(value) => <Avatar src={value[0].url} />}
-                        />
+                        {/*<Table.Column*/}
+                        {/*    key="gsm"*/}
+                        {/*    dataIndex="gsm"*/}
+                        {/*    title={t("users.fields.gsm")}*/}
+                        {/*/>*/}
+                        {/*<Table.Column*/}
+                        {/*    align="center"*/}
+                        {/*    key="avatar"*/}
+                        {/*    dataIndex={["avatar"]}*/}
+                        {/*    title={t("users.fields.avatar.label")}*/}
+                        {/*    render={(value) => <Avatar src={value[0].url} />}*/}
+                        {/*/>*/}
                         <Table.Column
                             key="firstName"
                             dataIndex="firstName"
@@ -133,8 +133,8 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
                             title={t("users.fields.lastName")}
                         />
                         <Table.Column
-                            key="gender"
-                            dataIndex="gender"
+                            key="email"
+                            dataIndex="email"
                             title={t("users.fields.gender.label")}
                             render={(value) =>
                                 t(`users.fields.gender.${value}`)

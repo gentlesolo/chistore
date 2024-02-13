@@ -17,14 +17,14 @@ const renderAuthContent = (content: React.ReactNode) => {
                 margin: "auto",
             }}
         >
-            <Link to="/">
-                <img
-                    style={{ marginBottom: 26 }}
-                    src="/images/fine-foods-login.svg"
-                    alt="Logo"
-                    width="100%"
-                />
-            </Link>
+            {/*<Link to="/">*/}
+            {/*    <img*/}
+            {/*        style={{ marginBottom: 26 }}*/}
+            {/*        src="/images/fine-foods-login.svg"*/}
+            {/*        alt="Logo"*/}
+            {/*        width="100%"*/}
+            {/*    />*/}
+            {/*</Link>*/}
             {content}
         </div>
     );
